@@ -1,0 +1,98 @@
+{
+    "SVUnit" :
+        {
+            "url"       : "https://github.com/nosnhojn/svunit-code",
+            "install"   : "git clone https://github.com/nosnhojn/svunit-code $HOME/.svunit",
+            "remove"    : "rm -fr $HOME/.svunit",
+            "type"      : "user",
+            "source"    : "git"
+        },
+    "Git" :
+        {
+            "url"       : "https://git-scm.com",
+            "install"   : "apt-get install git",
+            "remove"    : "apt-get remove git",
+            "type"      : "system",
+            "source"    : "apt-get"
+        },
+    "Zsh" :
+        {
+            "url"       : "http://www.zsh.org",
+            "install"   : "apt-get install zsh",
+            "remove "   : "apt-get remove zsh",
+            "type"      : "system",
+            "source"    : "apt-get"
+        },
+    "Verilator" :
+        {
+            "url"       : "https://www.veripool.org/wiki/verilator",
+            "install"   : "apt-get install verilator",
+            "remove"    : "apt-get remove verilator",
+            "type"      : "system",
+            "source"    : "apt-get"
+        },
+    "IcarusVerilog" :
+        {
+            "url"       : "http://iverilog.icarus.com",
+            "install"   : "apt-get install iverilog",
+            "remove"    : "apt-get remove iverilog",
+            "type"      : "system",
+            "source"    : "apt-get"
+        },
+    "DoIt" :
+        {
+            "url"       : "http://pydoit.org",
+            "install"   : "pip install doit==0.29.0",
+            "remove"    : "pip uninstall doit",
+            "type"      : "system",
+            "source"    : "python"
+        },
+    "Vim" :
+        {
+            "url"       : "http://www.vim.org/",
+            "install"   : "apt-get install vim",
+            "remove"    : "apt-get remove vim",
+            "type"      : "system",
+            "source"    : "apt-get"
+        },
+    "Tmux" :
+        {
+            "url"       : "https://tmux.github.io",
+            "install"   : "apt-get install tmux",
+            "remove"    : "apt-get remove tmux",
+            "type"      : "system",
+            "source"    : "apt-get"
+        },
+    "Oh-My-Zsh" :
+        {
+            "url"       : "https://github.com/robbyrussell/oh-my-zsh",
+            "install"   : "git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh",
+            "remove"    : "rm -fr $HOME/.oh-my-zsh",
+            "type"      : "user",
+            "source"    : "git"
+        },
+    "PowerLine" :
+        {
+            "url"       : "https://github.com/powerline/fonts",
+            "install"   : "git clone https://github.com/powerline/fonts.git $HOME/.fonts",
+            "remove"    : "rm -fr $HOME/.fonts",
+            "type"      : "user",
+            "source"    : "git"
+        },
+    "Docopt" :
+        {
+            "url"       : "docopt.org",
+            "install"   : "pip install docopt",
+            "remove"    : "pip uninstall docopt",
+            "type"      : "system",
+            "source"    : "python"
+        },
+    "GTKWave" :
+        {
+            "url"       : "http://gtkwave.sourceforge.net",
+            "install"   : "apt-get install gtkwave",
+            "remove"    : "apt-get remove gtkwave",
+            "type"      : "system",
+            "source"    : "apt-get"
+        }
+}
