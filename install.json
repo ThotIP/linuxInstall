@@ -5,7 +5,8 @@
             "install"   : "git clone https://github.com/nosnhojn/svunit-code $HOME/.svunit",
             "remove"    : "rm -fr $HOME/.svunit",
             "type"      : "user",
-            "source"    : "git"
+            "source"    : "git",
+            "setup"     : "PATH = \"$HOME\"/.svunit:$PATH"
         },
     "Git" :
         {
@@ -13,7 +14,8 @@
             "install"   : "apt-get install git",
             "remove"    : "apt-get remove git",
             "type"      : "system",
-            "source"    : "apt-get"
+            "source"    : "apt-get",
+            "setup"     : ""
         },
     "Zsh" :
         {
@@ -21,7 +23,9 @@
             "install"   : "apt-get install zsh",
             "remove "   : "apt-get remove zsh",
             "type"      : "system",
-            "source"    : "apt-get"
+            "source"    : "apt-get",
+            "setup"     : ""
+
         },
     "Verilator" :
         {
@@ -29,7 +33,9 @@
             "install"   : "apt-get install verilator",
             "remove"    : "apt-get remove verilator",
             "type"      : "system",
-            "source"    : "apt-get"
+            "source"    : "apt-get",
+            "setup"     : ""
+
         },
     "IcarusVerilog" :
         {
@@ -37,7 +43,9 @@
             "install"   : "apt-get install iverilog",
             "remove"    : "apt-get remove iverilog",
             "type"      : "system",
-            "source"    : "apt-get"
+            "source"    : "apt-get",
+            "setup"     : ""
+
         },
     "DoIt" :
         {
@@ -45,7 +53,9 @@
             "install"   : "pip install doit==0.29.0",
             "remove"    : "pip uninstall doit",
             "type"      : "system",
-            "source"    : "python"
+            "source"    : "python",
+            "setup"     : ""
+
         },
     "Vim" :
         {
@@ -53,7 +63,9 @@
             "install"   : "apt-get install vim",
             "remove"    : "apt-get remove vim",
             "type"      : "system",
-            "source"    : "apt-get"
+            "source"    : "apt-get",
+            "setup"     : ""
+
         },
     "Tmux" :
         {
@@ -61,7 +73,9 @@
             "install"   : "apt-get install tmux",
             "remove"    : "apt-get remove tmux",
             "type"      : "system",
-            "source"    : "apt-get"
+            "source"    : "apt-get",
+            "setup"     : ""
+
         },
     "Oh-My-Zsh" :
         {
@@ -69,7 +83,9 @@
             "install"   : "git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh",
             "remove"    : "rm -fr $HOME/.oh-my-zsh",
             "type"      : "user",
-            "source"    : "git"
+            "source"    : "git",
+            "setup"     : ""
+
         },
     "PowerLine" :
         {
@@ -77,7 +93,9 @@
             "install"   : "git clone https://github.com/powerline/fonts.git $HOME/.fonts",
             "remove"    : "rm -fr $HOME/.fonts",
             "type"      : "user",
-            "source"    : "git"
+            "source"    : "git",
+            "setup"     : ""
+
         },
     "Docopt" :
         {
@@ -85,7 +103,9 @@
             "install"   : "pip install docopt",
             "remove"    : "pip uninstall docopt",
             "type"      : "system",
-            "source"    : "python"
+            "source"    : "python",
+            "setup"     : ""
+
         },
     "GTKWave" :
         {
@@ -93,6 +113,8 @@
             "install"   : "apt-get install gtkwave",
             "remove"    : "apt-get remove gtkwave",
             "type"      : "system",
-            "source"    : "apt-get"
+            "source"    : "apt-get",
+            "setup"     : ""
+
         }
 }
