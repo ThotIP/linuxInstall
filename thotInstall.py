@@ -6,6 +6,7 @@
 Usage:
   thotInstall.py install <name> [--dry-run] [--json] [--verbose]
   thotInstall.py remove <name> [--dry-run] [--json] [--verbose]
+  thotInstall.py list [--json] [--verbose]
   thotInstall.py (-h | --help)
   thotInstall.py --version
 
@@ -32,7 +33,9 @@ if __name__ == '__main__':
 
     arguments = docopt(__doc__, version='ThotIP Installer 1.0')
     json_file = ""
-    print(arguments)
+
+    if arguments["--verbose"]:
+        print(arguments)
 
     # Inform user about sudo priviledge for system install
     if os.geteuid() != 0:
@@ -55,7 +58,9 @@ if __name__ == '__main__':
             json_file = arguments["--json"]
     
     # Check if we need to install or remove the package
-    if arguments["install"] and not arguments["remove"]:
+    if arguments["list"]:
+        docOptCmd = "list"
+    elif arguments["install"] and not arguments["remove"]:
         docOptCmd = "install"
     else:
         docOptCmd = "remove"
@@ -64,44 +69,53 @@ if __name__ == '__main__':
     with open(json_file) as data_file:
         data = json.load(data_file)
 
+    if docOptCmd == "list":
+        print "This is the packages available to install:"
+
     # Parse the package list and proceed to
     # install / uninstall execution
     for k, v in data.items():
+        
+        # Only print the package name
+        if docOptCmd == "list":
+            print "    ->", k
 
-        # Status indicates a package can be installed
-        # Wait for user answer is package is a user install
-        status = "ko"
+        # Else proceed to install/remove
+        else: 
+            # Status indicates a package can be installed
+            # Wait for user answer is package is a user install
+            status = "ko"
 
-        if docOptCmd == "install":
-            print "Installing", k
-        else:
-            print "Removing", k
-        
-        # Ask to the user if he wants to install in his home the 
-        # package
-        choice = "y"
-        if v["type"] == "user":
-            print k, "is a user package. Do you want to proceed to installation? [Y/n]"
-            choice = raw_input().lower()
-            if choice in yes:
-                status = "ok"
-        
-        # If the user wants to proceed, execute the command
-        if status == "ok":
-            cmd = v[docOptCmd]
-            # TODO: execution with subprocess to remove STDOUT
-            # The new line doesn't work
-            if arguments["--verbose"]:
-                cmd += " > /dev/null 2>&1"
-            if arguments["--dry-run"] is False:
-                ret = os.system(cmd)
-                if ret:
-                    print "ERROR: Can't execute install command of", k
-                    sys.exit(1)
-        
-            # Print the setup command to help the user to configure
-            if v["setup"] is not "":
-                print k, "is installed. Setup your new package with the follwong command:"
-                print v["setup"]
+            if docOptCmd == "install":
+                print "Installing", k
+            else:
+                print "Removing", k
+            
+            # Ask to the user if he wants to install in his home the 
+            # package
+            choice = "y"
+            if v["type"] == "user":
+                print k, "is a user package. Do you want to proceed to " + docOptCmd + " ? [Y/n]"
+                choice = raw_input().lower()
+                if choice in yes:
+                    status = "ok"
+            
+            # If the user wants to proceed, execute the command
+            if status == "ok":
+                cmd = v[docOptCmd]
+                # TODO: execution with subprocess to remove STDOUT
+                # The new line doesn't work
+                if arguments["--verbose"]:
+                    cmd += " > /dev/null 2>&1"
+                if arguments["--dry-run"] is False:
+                    ret = os.system(cmd)
+                    if ret:
+                        print "ERROR: Can't execute install command of", k
+                        sys.exit(1)
+            
+                # Print the setup command to help the user to configure
+                if v["setup"] != "":
+                    print k, "is installed. Setup your new package with the follwong command:"
+                    print v["setup"]
 
 

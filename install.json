@@ -116,7 +116,7 @@
             "source"    : "apt-get",
             "setup"     : ""
 
-        }
+        },
     "OpenJDK" :
         {
             "url"       : "http://openjdk.java.net",
@@ -129,7 +129,7 @@
         },
     "Scala" :
         {
-            "url"       : "http://www.scala-lang.org,
+            "url"       : "http://www.scala-lang.org",
             "install"   : "sudo apt-get install scala",
             "remove"    : "sudo apt-get remove scala",
             "type"      : "system",
