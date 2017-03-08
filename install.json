@@ -117,4 +117,33 @@
             "setup"     : ""
 
         }
+    "OpenJDK" :
+        {
+            "url"       : "http://openjdk.java.net",
+            "install"   : "sudo apt-get install openjdk-8-jdk",
+            "remove"    : "sudo apt-get remove openjdk-8-jdk",
+            "type"      : "system",
+            "source"    : "apt-get",
+            "setup"     : ""
+
+        },
+    "Scala" :
+        {
+            "url"       : "http://www.scala-lang.org,
+            "install"   : "sudo apt-get install scala",
+            "remove"    : "sudo apt-get remove scala",
+            "type"      : "system",
+            "source"    : "apt-get",
+            "setup"     : ""
+
+        },
+    "SBT" : 
+        {
+        "url"       : "http://www.scala-sbt.org",
+        "install"   : "echo \"deb https://dl.bintray.com/sbt/debian /\" | sudo tee -a /etc/apt/sources.list.d/sbt.list;sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823;sudo apt-get update;sudo apt-get install sbt",
+        "remove"    : "apt-get remove sbt",
+        "type"      : "system",
+        "source"    : "apt-get",
+        "setup"     : ""
+        }
 }

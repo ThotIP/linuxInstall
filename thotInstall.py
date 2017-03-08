@@ -79,8 +79,9 @@ if __name__ == '__main__':
         
         # Ask to the user if he wants to install in his home the 
         # package
+        choice = "y"
         if v["type"] == "user":
-            print k, "is a user package. Do you want to proceed to installation?"
+            print k, "is a user package. Do you want to proceed to installation? [Y/n]"
             choice = raw_input().lower()
             if choice in yes:
                 status = "ok"
