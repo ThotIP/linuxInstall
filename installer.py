@@ -56,7 +56,7 @@ if __name__ == '__main__':
             sys.exit(1)
         else:
             json_file = arguments["--json"]
-    
+
     # Check if we need to install or remove the package
     if arguments["list"]:
         docOptCmd = "list"
@@ -64,7 +64,7 @@ if __name__ == '__main__':
         docOptCmd = "install"
     else:
         docOptCmd = "remove"
-    
+
     # Load the JSON file
     with open(json_file) as data_file:
         data = json.load(data_file)
@@ -75,47 +75,49 @@ if __name__ == '__main__':
     # Parse the package list and proceed to
     # install / uninstall execution
     for k, v in data.items():
-        
+
         # Only print the package name
         if docOptCmd == "list":
             print "    ->", k
 
         # Else proceed to install/remove
-        else: 
-            # Status indicates a package can be installed
-            # Wait for user answer is package is a user install
-            status = "ko"
+        else:
+            if arguments["<name>"] ==  k or arguments["<name>"] == "all":
 
-            if docOptCmd == "install":
-                print "Installing", k
-            else:
-                print "Removing", k
-            
-            # Ask to the user if he wants to install in his home the 
-            # package
-            choice = "y"
-            if v["type"] == "user":
-                print k, "is a user package. Do you want to proceed to " + docOptCmd + " ? [Y/n]"
-                choice = raw_input().lower()
-                if choice in yes:
-                    status = "ok"
-            
-            # If the user wants to proceed, execute the command
-            if status == "ok":
-                cmd = v[docOptCmd]
-                # TODO: execution with subprocess to remove STDOUT
-                # The new line doesn't work
-                if arguments["--verbose"]:
-                    cmd += " > /dev/null 2>&1"
-                if arguments["--dry-run"] is False:
-                    ret = os.system(cmd)
-                    if ret:
-                        print "ERROR: Can't execute install command of", k
-                        sys.exit(1)
-            
-                # Print the setup command to help the user to configure
-                if v["setup"] != "":
-                    print k, "is installed. Setup your new package with the follwong command:"
-                    print v["setup"]
+                # Status indicates a package can be installed
+                # Wait for user answer is package is a user install
+                status = "ko"
+
+                if docOptCmd == "install":
+                    print "Installing", k
+                else:
+                    print "Removing", k
+
+                # Ask to the user if he wants to install in his home the
+                # package
+                choice = "y"
+                if v["type"] == "user":
+                    print k, "is a user package. Do you want to proceed to " + docOptCmd + " ? [Y/n]"
+                    choice = raw_input().lower()
+                    if choice in yes:
+                        status = "ok"
+
+                # If the user wants to proceed, execute the command
+                if status == "ok":
+                    cmd = v[docOptCmd]
+                    # TODO: execution with subprocess to remove STDOUT
+                    # The new line doesn't work
+                    if arguments["--verbose"]:
+                        cmd += " > /dev/null 2>&1"
+                    if arguments["--dry-run"] is False:
+                        ret = os.system(cmd)
+                        if ret:
+                            print "ERROR: Can't execute install command of", k
+                            sys.exit(1)
+
+                    # Print the setup command to help the user to configure
+                    if v["setup"] != "":
+                        print k, "is installed. Setup your new package with the follwong command:"
+                        print v["setup"]
 
 
