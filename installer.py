@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-""" ThotIP Installer v1.0
+""" Installer v1.0
 
 Usage:
   thotInstall.py install <name> [--dry-run] [--json] [--verbose]
